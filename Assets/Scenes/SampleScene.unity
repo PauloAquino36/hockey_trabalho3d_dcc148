@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 204203439}
   m_Layer: 0
   m_Name: parde
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,33 +203,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -9201090675712731757, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
   m_PrefabInstance: {fileID: 527671878}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &287168107
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287168102}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &287168108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -383,13 +356,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: disco
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
+      propertyPath: m_TagString
+      value: Disco
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -9201090675712731757, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 287168107}
+      addedObject: {fileID: 1116783028}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116783027}
     - targetCorrespondingSourceObject: {fileID: -9201090675712731757, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 287168108}
@@ -636,6 +616,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 435405858}
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+--- !u!1 &1116783025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1df4f108a01ea174db8d4f7721a86ec2, type: 3}
+  m_PrefabInstance: {fileID: 527671878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116783027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116783025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc251757d96c09419e2cc81bbf7f6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadeInicial: 10
+--- !u!54 &1116783028
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116783025}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1236983739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -687,6 +712,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d0746c0b763fe9c4782cf668c61ecf2e, type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0746c0b763fe9c4782cf668c61ecf2e, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -836,7 +865,7 @@ GameObject:
   - component: {fileID: 1609571514}
   m_Layer: 0
   m_Name: paredeGol (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -915,7 +944,7 @@ GameObject:
   - component: {fileID: 2027923831}
   m_Layer: 0
   m_Name: parde (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,7 +997,7 @@ GameObject:
   - component: {fileID: 2094451975}
   m_Layer: 0
   m_Name: paredeGol
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
