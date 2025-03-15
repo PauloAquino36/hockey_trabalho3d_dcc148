@@ -39,12 +39,13 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude > 0.1f)
-        {
+        {  
+            animator.SetBool("run", true);
             moviment(direction);
         }
         else
         {
-            animator.SetFloat("speed", 0f);
+            animator.SetBool("run", false);
         }
     }
     void moviment(Vector3 direction)
@@ -71,8 +72,6 @@ public class Player : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothSpeed);
         }
-
-        //animator.SetFloat("speed", isRunning ? runSpeed : walkSpeed);
     }
 
     void AlignCameraWithPlayer()
