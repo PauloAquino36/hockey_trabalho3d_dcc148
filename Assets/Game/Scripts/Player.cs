@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         }
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("colide"))
         {
+            animator.SetInteger("run", 0);
             parado = true;
         }
         else
@@ -107,7 +108,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Disco")
         {
             animator.SetTrigger("stop");
-            parado = true;
         }
     }
 
