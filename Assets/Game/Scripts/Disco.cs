@@ -3,17 +3,31 @@ using UnityEngine;
 public class Disco : MonoBehaviour
 {
     public float velocidadeInicial = 10f;
+    public float taxaDesaceleracao = 0.15f;
+    private bool move = false;
     private Rigidbody rb;
+    private Vector3 posicaoInicial;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = new Vector3(velocidadeInicial, 0, velocidadeInicial);
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        posicaoInicial = transform.position;
     }
 
     void Update()
     {
-        rb.linearVelocity = rb.linearVelocity.normalized * velocidadeInicial;
+        if (move)
+        {
+            if (rb.linearVelocity.magnitude > velocidadeInicial)
+            {
+                rb.linearVelocity -= rb.linearVelocity.normalized * taxaDesaceleracao * Time.deltaTime;
+            }
+            else
+            {
+                rb.linearVelocity = rb.linearVelocity.normalized * velocidadeInicial;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,12 +35,20 @@ public class Disco : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Vector3 direcaoOposta = (transform.position - collision.transform.position).normalized;
-            rb.linearVelocity = direcaoOposta * velocidadeInicial;
+            direcaoOposta.y = 0;
+            direcaoOposta.Normalize();
+            rb.linearVelocity = direcaoOposta * velocidadeInicial * 4f;
+            if (!move)
+            {
+                move = true;
+            }
         }
         else if (collision.gameObject.CompareTag("Wall"))
         {
-            Vector3 normal = collision.contacts[0].normal;
-            rb.linearVelocity = Vector3.Reflect(rb.linearVelocity, normal);
+            Vector3 direcaoOposta = (transform.position - collision.transform.position).normalized;
+            direcaoOposta.y = 0;
+            direcaoOposta.Normalize();
+            rb.linearVelocity = direcaoOposta * velocidadeInicial * 2f;
         }
     }
 }
