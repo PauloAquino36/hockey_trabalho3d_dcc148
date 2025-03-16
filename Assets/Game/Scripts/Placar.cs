@@ -3,6 +3,7 @@ using TMPro;
 
 public class Placar : MonoBehaviour
 {
+    public int pontosParaVitoria = 3;
     public int pontuacaoJogador1 = 0;
     public int pontuacaoJogador2 = 0;
 
@@ -19,11 +20,29 @@ public class Placar : MonoBehaviour
         {
             pontuacaoJogador1++;
             textoPlacarJogador1.text = pontuacaoJogador1.ToString();
+            if(pontuacaoJogador1 >= pontosParaVitoria)
+            {
+                Debug.Log("Jogador 1 venceu!");
+                Application.Quit();
+        
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #endif
+            }
         }
         else if (jogadorTag == "Player2")
         {
             pontuacaoJogador2++;
             textoPlacarJogador2.text = pontuacaoJogador2.ToString();
+            if (pontuacaoJogador2 >= pontosParaVitoria)
+            {
+                Debug.Log("Jogador 2 venceu!");
+                Application.Quit();
+        
+                #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #endif
+            }
         }
 
         if (disco != null)
