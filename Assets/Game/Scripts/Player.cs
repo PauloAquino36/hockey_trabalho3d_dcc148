@@ -52,12 +52,11 @@ public class Player : MonoBehaviour
 
         if (direction.magnitude > 0.1f)
         {  
-            animator.SetBool("run", true);
             moviment(direction);
         }
         else
         {
-            animator.SetBool("run", false);
+            animator.SetInteger("run", 0);
         }
     }
     void moviment(Vector3 direction)
@@ -78,6 +77,14 @@ public class Player : MonoBehaviour
 
         // Verifica se o jogador está apenas andando para trás (S) sem pressionar esquerda/direita
         bool onlyMovingBackward = direction.z < 0 && Mathf.Abs(direction.x) < 0.1f;
+        if(onlyMovingBackward)
+        {
+            animator.SetInteger("run", 2);
+        }
+        else
+        {
+            animator.SetInteger("run", 1);
+        }
 
         if (!onlyMovingBackward && moveDirection.magnitude > 0.1f)
         {
