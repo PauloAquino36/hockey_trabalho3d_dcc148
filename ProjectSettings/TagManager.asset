@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Disco
   - Wall
+  - Gol1
+  - Gol2
+  - Mob
   layers:
   - Default
   - TransparentFX

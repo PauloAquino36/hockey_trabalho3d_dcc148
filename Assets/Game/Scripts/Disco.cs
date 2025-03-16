@@ -32,7 +32,7 @@ public class Disco : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Mob"))
         {
             Vector3 direcaoOposta = (transform.position - collision.transform.position).normalized;
             direcaoOposta.y = 0;
@@ -50,5 +50,12 @@ public class Disco : MonoBehaviour
             direcaoOposta.Normalize();
             rb.linearVelocity = direcaoOposta * velocidadeInicial * 2f;
         }
+    }
+
+    public void resetPosition()
+    {
+        transform.position = posicaoInicial;
+        rb.linearVelocity = Vector3.zero;
+        move = false;
     }
 }

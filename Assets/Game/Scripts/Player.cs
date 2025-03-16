@@ -14,12 +14,13 @@ public class Player : MonoBehaviour
     private bool shouldRotate = false;
     private bool parado = false;
     public float rotationSmoothSpeed = 5f;
+    private Vector3 posicaoInicial;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
-
+        posicaoInicial = transform.position;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -108,5 +109,11 @@ public class Player : MonoBehaviour
             animator.SetTrigger("stop");
             parado = true;
         }
+    }
+
+    public void resetPosition()
+    {
+        transform.position = posicaoInicial;
+        rb.linearVelocity = Vector3.zero;
     }
 }
