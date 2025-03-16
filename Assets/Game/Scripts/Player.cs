@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Quaternion targetRotation;
     private bool shouldRotate = false;
+    private bool parado = false;
     public float rotationSmoothSpeed = 5f;
     void Start()
     {
@@ -24,11 +25,22 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        move();
+        if(!parado)
+        {
+            move();
+        }
         // Faz a rotação do player ser gradual
         if (shouldRotate)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("colide"))
+        {
+            parado = true;
+        }
+        else
+        {
+            parado = false;
         }
     }
 
@@ -80,5 +92,14 @@ public class Player : MonoBehaviour
         cameraForward.y = 0f;
         targetRotation = Quaternion.LookRotation(cameraForward);
         shouldRotate = true;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Disco")
+        {
+            animator.SetTrigger("stop");
+            parado = true;
+        }
     }
 }
