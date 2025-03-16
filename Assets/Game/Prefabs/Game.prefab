@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4bba6099ea83240881d4b2da5db750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pontosParaVitoria: 3
   pontuacaoJogador1: 0
   pontuacaoJogador2: 0
   textoPlacarJogador1: {fileID: 0}

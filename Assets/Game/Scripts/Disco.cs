@@ -52,8 +52,8 @@ public class Disco : MonoBehaviour
 
     public void resetPosition()
     {
-        transform.position = posicaoInicial;
         rb.linearVelocity = Vector3.zero;
         move = false;
+        transform.position = posicaoInicial;
     }
 }
