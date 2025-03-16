@@ -1,5 +1,5 @@
 # ==================================================================
-# Unity generated files
+# Unity gerado automaticamente
 # ==================================================================
 [Ll]ibrary/
 [Tt]emp/
@@ -9,14 +9,14 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
-# Asset Bundles
+# Bundles de Assets
 *.manifest
 
-# Crash Reports
+# Relatórios de Crash
 sysinfo.txt
 
 # ==================================================================
-# Visual Studio/MonoDevelop generated files
+# Arquivos gerados pelo Visual Studio/MonoDevelop
 # ==================================================================
 .vscode/
 .vscode/*
@@ -31,7 +31,7 @@ sysinfo.txt
 *.svd
 
 # ==================================================================
-# OS-specific files
+# Arquivos específicos do sistema operacional
 # ==================================================================
 .DS_Store
 .DS_Store?
@@ -42,7 +42,7 @@ ehthumbs.db
 Thumbs.db
 
 # ==================================================================
-# Auto-generated Files (Unity)
+# Arquivos auto-gerados do Unity
 # ==================================================================
 *.apk
 *.app
@@ -50,26 +50,40 @@ Thumbs.db
 *.db
 
 # ==================================================================
-# Scriptable Objects and other generated configs
+# Arquivos de configurações de ScriptableObjects e outros
 # ==================================================================
-/Assets/**/*.meta
-/*.meta
+/[Aa]ssets/StreamingAssets/
+/[Aa]ssets/AddressableAssetsData/
 
-# Ignore Unity Cloud Build files
+# ==================================================================
+# Unity Cloud Build
+# ==================================================================
 /[Uu]ser[Ss]ettings/
 
-# Ignore Collaborate metadata files
+# ==================================================================
+# Unity Collaborate (antigo sistema de versionamento do Unity)
+# ==================================================================
 /[Aa]ssets/Collab/
 
-# Ignore Build Report files
+# ==================================================================
+# Relatórios de Build
+# ==================================================================
 *.buildreport
 
 # ==================================================================
-# Ignore JetBrains Rider
+# JetBrains Rider
 # ==================================================================
 .idea/
 .idea/*
 
 # ==================================================================
-# Package Manager
+# Arquivos essenciais para o Unity (não ignorar)
 # ==================================================================
+!*.meta  # Garante que os arquivos .meta sejam versionados
+
+# ==================================================================
+# Package Manager (Essencial para pacotes como TextMeshPro)
+# ==================================================================
+!Packages/manifest.json
+!Packages/packages-lock.json
+!Packages/packages-com.unity.textmeshpro/*
