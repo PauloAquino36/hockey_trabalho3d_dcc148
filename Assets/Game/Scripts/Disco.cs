@@ -15,13 +15,13 @@ public class Disco : MonoBehaviour
         posicaoInicial = transform.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (move)
         {
             if (rb.linearVelocity.magnitude > velocidadeInicial)
             {
-                rb.linearVelocity -= rb.linearVelocity.normalized * taxaDesaceleracao * Time.deltaTime;
+                rb.linearVelocity -= rb.linearVelocity.normalized * taxaDesaceleracao * Time.fixedDeltaTime;
             }
             else
             {
@@ -36,7 +36,6 @@ public class Disco : MonoBehaviour
         {
             Vector3 direcaoOposta = (transform.position - collision.transform.position).normalized;
             direcaoOposta.y = 0;
-            direcaoOposta.Normalize();
             rb.linearVelocity = direcaoOposta * velocidadeInicial * 4f;
             if (!move)
             {
@@ -47,7 +46,6 @@ public class Disco : MonoBehaviour
         {
             Vector3 direcaoOposta = (transform.position - collision.transform.position).normalized;
             direcaoOposta.y = 0;
-            direcaoOposta.Normalize();
             rb.linearVelocity = direcaoOposta * velocidadeInicial * 2f;
         }
     }
