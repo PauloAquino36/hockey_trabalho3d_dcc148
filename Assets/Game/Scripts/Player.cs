@@ -4,7 +4,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public float walkSpeed = 5f;
+    public float walkSpeed = 6f;
     public Transform cameraTransform;
     public float rotationSpeed = 720f;
 
