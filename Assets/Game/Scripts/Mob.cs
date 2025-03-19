@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Mob : MonoBehaviour
 {
-    public float walkSpeed = 10f;
+    public float walkSpeed = 8f;
     public float rotationSpeed = 720f;
     public float detectionRange = 20f; // Distância máxima para detectar o disco
     public float stoppingDistance = 1f; // Distância para parar perto do disco

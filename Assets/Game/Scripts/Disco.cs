@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Disco : MonoBehaviour
 {
-    public float velocidadeInicial = 10f;
+    public float velocidadeInicial = 7f;
     public float taxaDesaceleracao = 0.05f;
     private bool move = false;
     private Rigidbody rb;
