@@ -1,41 +1,52 @@
 using UnityEngine;
-using System.Collections;
-using System;
 
 public class Player : MonoBehaviour
 {
     public float walkSpeed = 8f;
     public Transform cameraTransform;
     public float rotationSpeed = 720f;
+    public float mouseSensitivity = 1000f;
 
     private Rigidbody rb;
     private Animator animator;
-    private Quaternion targetRotation;
-    private bool shouldRotate = false;
     private bool parado = false;
-    public float rotationSmoothSpeed = 5f;
     private Vector3 posicaoInicial;
+    private float yRotation = 0f; // Rotação horizontal da câmera
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
         posicaoInicial = transform.position;
-        Cursor.lockState = CursorLockMode.Locked;
+        
+        // Esconde e trava o cursor
+        LockAndHideCursor();
     }
 
-    void FixedUpdate ()
+    void Update()
     {
-        if(!parado)
+
+        // Verifica se o jogo está em foco e trava o cursor novamente, se necessário
+        if (Cursor.lockState != CursorLockMode.Locked || Cursor.visible)
+        {
+            LockAndHideCursor();
+        }
+
+        // Controle da rotação da câmera com o mouse (apenas horizontal)
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        yRotation += mouseX;
+        transform.rotation = Quaternion.Euler(0f, yRotation, 0f); // Aplica a rotação ao player
+    }
+
+    void FixedUpdate()
+    {
+        if (!parado)
         {
             move();
         }
-        // Faz a rotação do player ser gradual
-        if (shouldRotate)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        }
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("colide"))
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("colide"))
         {
             animator.SetInteger("run", 0);
             parado = true;
@@ -53,7 +64,7 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude > 0.1f)
-        {  
+        {
             moviment(direction);
         }
         else
@@ -61,46 +72,25 @@ public class Player : MonoBehaviour
             animator.SetInteger("run", 0);
         }
     }
+
     void moviment(Vector3 direction)
     {
-        Vector3 forward = cameraTransform.forward;
-        Vector3 right = cameraTransform.right;
+        // Movimento relativo à rotação do player (câmera)
+        Vector3 moveDirection = transform.forward * direction.z + transform.right * direction.x;
+        moveDirection.Normalize();
 
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        Vector3 moveDirection = (forward * direction.z + right * direction.x).normalized;
         Vector3 newVelocity = moveDirection * walkSpeed;
-
         rb.linearVelocity = new Vector3(newVelocity.x, rb.linearVelocity.y, newVelocity.z);
 
-        // Verifica se o jogador está apenas andando para trás (S) sem pressionar esquerda/direita
-        bool onlyMovingBackward = direction.z < 0 && Mathf.Abs(direction.x) < 0.1f;
-        if(onlyMovingBackward)
+        // Define a animação com base na direção do movimento
+        if (direction.z < 0 && Mathf.Abs(direction.x) < 0.1f) // Movendo para trás
         {
             animator.SetInteger("run", 2);
         }
-        else
+        else if (direction.magnitude > 0.1f) // Movendo para frente ou para os lados
         {
             animator.SetInteger("run", 1);
         }
-
-        if (!onlyMovingBackward && moveDirection.magnitude > 0.1f)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothSpeed);
-        }
-    }
-
-    void AlignCameraWithPlayer()
-    {
-        Vector3 cameraForward = cameraTransform.forward;
-        cameraForward.y = 0f;
-        targetRotation = Quaternion.LookRotation(cameraForward);
-        shouldRotate = true;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -111,6 +101,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void LockAndHideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
     public void resetPosition()
     {
         transform.position = posicaoInicial;

@@ -119,6 +119,21 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &13283691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7024282108189093546, guid: 245dbdabea46f724a95bd5b1eecd9c5c, type: 3}
+  m_PrefabInstance: {fileID: 8661711497146036972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &186513110 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6586932110622560383, guid: 245dbdabea46f724a95bd5b1eecd9c5c, type: 3}
+  m_PrefabInstance: {fileID: 8661711497146036972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &241294208 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6314499718751816407, guid: 245dbdabea46f724a95bd5b1eecd9c5c, type: 3}
+  m_PrefabInstance: {fileID: 8661711497146036972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &408216644 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5423682610178135546, guid: b7e584870378c0e46ad31df5454fe15c, type: 3}
@@ -387,6 +402,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &803280366 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2307376873789212306, guid: 245dbdabea46f724a95bd5b1eecd9c5c, type: 3}
+  m_PrefabInstance: {fileID: 8661711497146036972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1116783027 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3576662373295822571, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
@@ -619,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576662373295822571, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
       propertyPath: velocidadeInicial
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6056259862118789741, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
       propertyPath: m_Name
@@ -664,6 +684,10 @@ PrefabInstance:
     - target: {fileID: 6865729855078246615, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745762412461837839, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -779,6 +803,10 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4275642383362086081, guid: 85a257e04eafc4745a9cee68a2e58ed2, type: 3}
+      propertyPath: mouseSensitivity
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4437777804199043063, guid: 85a257e04eafc4745a9cee68a2e58ed2, type: 3}
       propertyPath: m_Name
       value: player
@@ -805,9 +833,25 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
+      propertyPath: golProprio
+      value: 
+      objectReference: {fileID: 13283691}
+    - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
+      propertyPath: golAdversario
+      value: 
+      objectReference: {fileID: 241294208}
+    - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
+      propertyPath: paredeDireita
+      value: 
+      objectReference: {fileID: 186513110}
+    - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
       propertyPath: detectionRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
+      propertyPath: paredeEsquerda
+      value: 
+      objectReference: {fileID: 803280366}
     - target: {fileID: 8467978371954257714, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.6
