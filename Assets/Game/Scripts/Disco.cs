@@ -12,9 +12,10 @@ public class Disco : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         posicaoInicial = transform.position;
-    }
-
+    }   
     void FixedUpdate()
     {
         if (move)
