@@ -29,6 +29,8 @@ public class Mob : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
         posicaoInicial = transform.position;
         disco = GameObject.FindGameObjectWithTag("Disco"); // Encontra o objeto do disco pela tag
 
@@ -61,6 +63,8 @@ public class Mob : MonoBehaviour
         {
             parado = false;
         }
+
+        //transform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     void move()
@@ -199,7 +203,7 @@ public class Mob : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Disco" && podeChutar)
+        if ((collision.gameObject.tag == "Disco" && podeChutar) || collision.gameObject.tag == "Player")
         {
             // Verifica se o mob está chutando em direção ao gol adversário, para as paredes laterais ou defendendo o gol próprio
             if (EstaChutandoParaGolAdversario() || EstaChutandoParaParedes() || DiscoIndoParaGolProprio())

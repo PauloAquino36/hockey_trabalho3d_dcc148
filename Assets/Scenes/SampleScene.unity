@@ -634,6 +634,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3576662373295822571, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576662373295822571, guid: c88aad57291161d4eb8f7120b47331a1, type: 3}
       propertyPath: taxaDesaceleracao
       value: 0.05
       objectReference: {fileID: 0}

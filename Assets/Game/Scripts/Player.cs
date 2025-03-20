@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         rb.freezeRotation = true;
         posicaoInicial = transform.position;
-        
+
         // Esconde e trava o cursor
         LockAndHideCursor();
     }
@@ -87,15 +87,24 @@ public class Player : MonoBehaviour
         {
             animator.SetInteger("run", 2);
         }
-        else if (direction.magnitude > 0.1f) // Movendo para frente ou para os lados
+        else if (direction.x < 0) // Movendo para a esquerda
+        {
+            animator.SetInteger("run", 3);
+        }
+        else if (direction.x > 0) // Movendo para a direita
+        {
+            animator.SetInteger("run", 4);
+        }
+        else if (direction.magnitude > 0.1f) // Movendo para frente
         {
             animator.SetInteger("run", 1);
         }
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Disco")
+        if ((collision.gameObject.tag == "Disco" || collision.gameObject.tag == "Mob") && parado == false)
         {
             animator.SetTrigger("stop");
         }
