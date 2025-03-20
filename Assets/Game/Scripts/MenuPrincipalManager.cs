@@ -7,6 +7,8 @@ public class MenuPrincipalManager : MonoBehaviour
 
     public void Jogar() // Agora é público
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene(nomeDoLevelDeJogo);
     }
 

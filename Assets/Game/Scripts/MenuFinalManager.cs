@@ -9,6 +9,8 @@ public class MenuFinalManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         // Recupera os valores salvos no PlayerPrefs
         string vencedor = PlayerPrefs.GetString("Vencedor", "Partida Encerrada");
         int placarJogador1 = PlayerPrefs.GetInt("PlacarJogador1", 0);
