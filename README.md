@@ -43,7 +43,7 @@ Objetivo: Marcar 3 gols antes do adversário.
 
 ---
 
-##👥 Equipe
+👥 Equipe
 
 - Daniel Thielmann
 - Paulo Aquino
@@ -51,7 +51,7 @@ Objetivo: Marcar 3 gols antes do adversário.
 - Denis Vianello
 
  --- 
-##🧩 Assets Utilizados
+🧩 Assets Utilizados
 
 Modelo do player e inimigo (mob):
 Base Mesh Chibi - https://sketchfab.com/3d-models/base-mesh-chibi-699ee2e05bce46749ef93e3330cfb7d4
