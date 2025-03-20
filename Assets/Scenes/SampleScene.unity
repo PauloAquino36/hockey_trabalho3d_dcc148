@@ -850,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 186513110}
     - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
       propertyPath: detectionRange
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7665952005590329717, guid: 8273f1bffe58eb84abb145faa30de2e4, type: 3}
       propertyPath: paredeEsquerda

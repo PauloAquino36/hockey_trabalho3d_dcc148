@@ -5,7 +5,7 @@ public class Mob : MonoBehaviour
 {
     public float walkSpeed = 8f;
     public float rotationSpeed = 720f;
-    public float detectionRange = 20f; // Distância máxima para detectar o disco
+    public float detectionRange = 30f; // Distância máxima para detectar o disco
     public float stoppingDistance = 1f; // Distância para parar perto do disco
     public float campoMetade = 0f; // Define a metade do campo (eixo Z)
     public float cooldownChute = 1f; // Tempo de espera entre chutes
