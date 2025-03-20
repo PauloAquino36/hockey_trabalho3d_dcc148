@@ -35,7 +35,9 @@ Objetivo: Marcar 3 gols antes do adversário.
 ## 🛠️ Tecnologias Utilizadas
 
 🎮 **Game Engine:** Unity (C#).
+
 💻 **Linguagem de Programação:** C# (Unity).
+
 🔧 **Animação dos modelos:** Mixamo
 ---
 👥 Equipe
