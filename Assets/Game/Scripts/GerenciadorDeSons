@@ -1,0 +1,56 @@
+using UnityEngine;
+
+public class GerenciadorDeSons : MonoBehaviour
+{
+    public static GerenciadorDeSons instancia; // Singleton para facilitar acesso
+
+    [Header("Áudio Sources")]
+    public AudioSource efeitosSonoros;
+    public AudioSource musicaDeFundo;
+
+    [Header("Efeitos Sonoros")]
+    public AudioClip somGol;
+    public AudioClip somBotao;
+    public AudioClip somDiscoColisao;
+    public AudioClip somVitoria;
+
+    private void Awake()
+    {
+        // Garante que só exista um GerenciadorDeSons na cena
+        if (instancia == null)
+        {
+            instancia = this;
+            DontDestroyOnLoad(gameObject); // Mantém o objeto ao trocar de cena
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void TocarSomGol()
+    {
+        efeitosSonoros.PlayOneShot(somGol);
+    }
+
+    public void TocarSomBotao()
+    {
+        efeitosSonoros.PlayOneShot(somBotao);
+    }
+
+    public void TocarSomDiscoColisao()
+    {
+        efeitosSonoros.PlayOneShot(somDiscoColisao);
+    }
+
+    public void TocarSomVitoria()
+    {
+        efeitosSonoros.PlayOneShot(somVitoria);
+    }
+
+    public void DefinirVolume(float volume)
+    {
+        efeitosSonoros.volume = volume;
+        musicaDeFundo.volume = volume;
+    }
+}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Placar : MonoBehaviour
@@ -9,10 +10,12 @@ public class Placar : MonoBehaviour
 
     public TextMeshProUGUI textoPlacarJogador1;
     public TextMeshProUGUI textoPlacarJogador2;
-////
+
     public Disco disco;
     public Player player1;
     public Mob player2;
+
+    private string vencedor = "";
 
     public void AtualizarPlacar(string jogadorTag)
     {
@@ -20,46 +23,50 @@ public class Placar : MonoBehaviour
         {
             pontuacaoJogador1++;
             textoPlacarJogador1.text = pontuacaoJogador1.ToString();
-            if(pontuacaoJogador1 >= pontosParaVitoria)
+
+            if (pontuacaoJogador1 >= pontosParaVitoria)
             {
-                Debug.Log("Jogador 1 venceu!");
-                Application.Quit();
-        
-                #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-                #endif
+                vencedor = "VOCE VENCEU!";
+                IrParaMenuFinal();
+                return;
             }
         }
         else if (jogadorTag == "Player2")
         {
             pontuacaoJogador2++;
             textoPlacarJogador2.text = pontuacaoJogador2.ToString();
+
             if (pontuacaoJogador2 >= pontosParaVitoria)
             {
-                Debug.Log("Jogador 2 venceu!");
-                Application.Quit();
-        
-                #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-                #endif
+                vencedor = "O OPONENTE VENCEU!";
+                IrParaMenuFinal();
+                return;
             }
         }
 
-        if (disco != null)
-        {
-            disco.resetPosition();
-        }
-
-        if (player1 != null)
-        {
-            player1.resetPosition();
-        }
-
-        if (player2 != null)
-        {
-            player2.resetPosition();
-        }
+        ResetarPosicoes();
 
         Debug.Log("Placar: Jogador 1 " + pontuacaoJogador1 + " x " + pontuacaoJogador2 + " Jogador 2");
+    }
+
+    private void ResetarPosicoes()
+    {
+        if (disco != null)
+            disco.resetPosition();
+
+        if (player1 != null)
+            player1.resetPosition();
+
+        if (player2 != null)
+            player2.resetPosition();
+    }
+
+    private void IrParaMenuFinal()
+    {
+        PlayerPrefs.SetString("Vencedor", vencedor);
+        PlayerPrefs.SetInt("PlacarJogador1", pontuacaoJogador1);
+        PlayerPrefs.SetInt("PlacarJogador2", pontuacaoJogador2);
+
+        SceneManager.LoadScene("MenuFinal");
     }
 }
