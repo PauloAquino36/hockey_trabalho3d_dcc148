@@ -39,8 +39,12 @@ Objetivo: Marcar 3 gols antes do adversário.
 💻 **Linguagem de Programação:** C# (Unity).
 
 🔧 **Animação dos modelos:** Mixamo
+
+
 ---
-👥 Equipe
+
+##👥 Equipe
+
 - Daniel Thielmann
 - Paulo Aquino
 - Leony
